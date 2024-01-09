@@ -25,7 +25,6 @@ insert into ReferenceCode values ('Наименование чертежа')
 drop table FullDraftNameList
 drop table FullNameList
 drop table FullDraftList
-drop table #FullDraftList
 --начало
 create table FullDraftNameList
 (
@@ -165,134 +164,6 @@ SET DraftName=UPPER(DraftName)
 
 UPDATE FullDraftNameList
 SET DraftName=LTRIM(RTRIM(DraftName)) 
---------------старая запись без указаний
---create table FullNameList
---(
---DraftNameID					int identity(1,1)not null,  
---DraftName					varchar(50) null default('') unique,
---Constraint PK_FullNameListID primary key(DraftNameID),
---)
---create table FullDraftList
---(
-----id							int identity(1,1)not null,  
---Draft						decimal(13,2) not null,  
---DraftName					varchar(50) null default(''),
---DraftNameID					int null
---Constraint PK_FullDraftListID primary key(Draft),
---Constraint FK_DraftNameID_FullDraftList	foreign key(DraftNameID) references ReferenceInformation (ReferenceInformationID)
---)
---truncate table FullDraftList
---;with query1 as
---  (
---  select c.what 
---  from complect c  
---  where spec = 6
---  group by c.what
---  union
---  select c.what 
---  from ocomplect c  
---  where spec = 6
---  group by c.what
---  union
---  select c.what 
---  from complect c  
---  where ksi = 3 or ksi = 4
---  group by c.what
---  union
---  select c.what 
---  from ocomplect c  
---  where ksi = 3 or ksi = 4
---  group by c.what
---  ),
---  query2 as 
---  (
---  select c.what 
---  from complect c  
---  where spec = 3 and ksi = 2
---  group by c.what
---  union
---  select c.what 
---  from ocomplect c  
---  where spec = 3 and ksi = 2
---  group by c.what
---  ), 
---  query3 as
---  (
---  select c.*
---        ,m.hm 
---  from query1 c
---  left join m_cennik m on c.what = m.km_num
---  union
---  select c.*
---        ,m.hm 
---  from query2 c
---  left join m_cennik m on cast(c.what as char(14)) = m.ocen
---  )
---insert into FullDraftList(Draft) 
---select * from 
---(
---select distinct what as Draft1 from complect 
---union
---select distinct what  as Draft1 from ocomplect
---union
---select distinct draft  as Draft1 from prodact
---union
---select distinct draft  as Draft1 from osnsv
---union
---select distinct draftosn  as Draft1 from osnsv
---union
---select distinct what as Draft1 from query3
---union
---select distinct draft  as Draft1 from pomoika
---union
---select distinct draftosn  as Draft1 from pomoika
---union
---select distinct draftosn  as Draft1 from zayvka
---union
---select distinct z.draft  as Draft1 from zayvka z
---union
---select distinct draft  as Draft1 from proos
---union
---select distinct draftosn  as Draft1 from proos 
---union
---select distinct draftzap  as Draft1 from proos
---union
---select distinct draft_4  as Draft1 from os_pro
---union
---select distinct draftosn  as Draft1 from osn_act) f2
-
---update f1 set DraftName = f2.DSE 
---from	  
---FullDraftList f1
--- join listdse f2 on cast(f1.Draft / 1000 as int)=f2.Draft where Ltrim(rtrim(f2.dse)) <> ''
-
---update f1 set DraftName = f2.DraftName 
---from	  
---FullDraftList f1
--- join FullDraftNameList f2 on f1.Draft = f2.Draft where Ltrim(rtrim(f2.DraftName)) <> '' and Ltrim(rtrim(f1.DraftName)) = ''
-
--- update f1 set DraftName = f2.DraftName 
---from	  
---FullDraftList f1
--- join FullDraftNameList f2 on f1.Draft = f2.Draft where Ltrim(rtrim(f2.DraftName)) <> '' and Ltrim(rtrim(f1.DraftName)) = ''
-
---update f1 set DraftName = 'БЕЗ НАИМЕНОВАНИЯ' 
---from	  
---FullDraftList f1 where DraftName = ''
-
---insert into ReferenceInformation(
---	   [ReferenceCodeID]
---      ,[ReferenceName])
---select distinct 3 as [ReferenceCodeID] ,LTRIM(RTRIM(UPPER(DraftName))) as DraftName from FullDraftList order by DraftName
-
---update f1 set f1.DraftNameID = f2.ReferenceInformationID from
---FullDraftList f1
---join ReferenceInformation f2 on LTRIM(RTRIM(UPPER(f1.DraftName))) = f2.ReferenceName
-
---alter table FullDraftList drop constraint [DF__FullDraft__Draft__4D41E3E5] --тут да каждый раз менять надо
---ALTER TABLE FullDraftList
---DROP COLUMN DraftName
-
 --прописываем к чему относится - альтернативная запись!
 create table #FullDraftList
 (
@@ -421,10 +292,6 @@ update f1 set f1.DraftNameID = f2.ReferenceInformationID from
 #FullDraftList f1
 join ReferenceInformation f2 on LTRIM(RTRIM(UPPER(f1.DraftName))) = f2.ReferenceName where f2.ReferenceCodeID=3
 
---alter table FullDraftList drop constraint [DF__FullDraft__Draft__57BF7258] --тут да каждый раз менять надо
---ALTER TABLE FullDraftList
---DROP COLUMN DraftName
-
 update #FullDraftList set IsRig = 2 where DraftID in 
 (select f1.DraftID as DraftID from #FullDraftList f1
 join #FullDraftList f2 on f1.Draft=f2.Draft and f1.IsRig <> f2.IsRig 
@@ -432,5 +299,3 @@ join #FullDraftList f2 on f1.Draft=f2.Draft and f1.IsRig <> f2.IsRig
 insert into FullDraftList(Draft,DraftNameID,IsRig) 
 select distinct f1.Draft as Draft,f1.DraftNameID as DraftNameID, f1.IsRig as IsRig from #FullDraftList f1
 where draft >1000 order by Draft asc  
---404895
---392090

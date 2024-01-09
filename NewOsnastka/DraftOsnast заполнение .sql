@@ -308,5 +308,4 @@ SELECT
   join proos z on t.OldProosID = z.tzakpred 
   left join os_pro s on s.zak_1 = t.YearTechOrd
   left join zayvka zay on zay.predtz = t.OldZayvkaid 
-  --left join prod prodT on t.YearTechOrder = prodT.zak_1 
-  where t.IsApplicationFrom=1 --and t.TechOrder is not null and z.tzakpred<>null
+  where t.IsApplicationFrom=1 
