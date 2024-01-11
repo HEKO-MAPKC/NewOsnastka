@@ -26,50 +26,38 @@
           <FullPath>DraftOsnast заполнение .sql</FullPath>
         </FileNode>
         <FileNode Name="FullDraftNameList.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>FullDraftNameList.sql</FullPath>
         </FileNode>
         <FileNode Name="osn_act перенос.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>osn_act перенос.sql</FullPath>
         </FileNode>
         <FileNode Name="OsnastDraft.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>OsnastDraft.sql</FullPath>
         </FileNode>
         <FileNode Name="OSNSV переделка.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>OSNSV переделка.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery1.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>SQLQuery1.sql</FullPath>
-        </FileNode>
-        <FileNode Name="SQLQuery2.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>SQLQuery2.sql</FullPath>
-        </FileNode>
         <FileNode Name="TechOrder заполнение  — копия.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>TechOrder заполнение  — копия.sql</FullPath>
         </FileNode>
         <FileNode Name="TechOrder.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>TechOrder.sql</FullPath>
         </FileNode>
