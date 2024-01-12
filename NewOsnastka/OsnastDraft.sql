@@ -4,6 +4,7 @@ create table Osnastka.DraftOsnast
 --ОСНОВНАЯ ТАБЛИЦА
 --поля от заявки
 DraftOsnastID					int not null identity(1,1),
+OsnastkaByDraftID					int null,
 TechOrderID						int null,
 AmountEquipmentInWorkTogether	numeric(2,0) null,   		--(klo) -- Количество одновременно обрабатываемых деталей
 NameDraftOsnast					varchar(50) null,			--(naimosn) --Наименование оснастки (от конструктора)
@@ -75,5 +76,6 @@ YearTechOrd                   varchar(7) not null default(''),	--(zak_1)
 Constraint CHK_LaborManufacturingAssume							check(LaborManufacturingAssume >= 0),
 Constraint FK_TechOrderID_TechOrder				foreign key(TechOrderID)			references Osnastka.TechOrder (TechOrderID), 
 Constraint FK_ProdID_TechOrder					foreign key(ProdID)					references prod (ID), 
+Constraint FK_OsnastkaByDraftID_TechOrder			foreign key(OsnastkaByDraftID)			references Osnastka.OsnastkaByDraftList (OsnastkaByDraftID), 
 Constraint PK_DraftOsnastID						primary key(DraftOsnastID)
 )
