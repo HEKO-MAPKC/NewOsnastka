@@ -25,6 +25,7 @@ insert into ReferenceCode values ('Наименование чертежа')
 drop table FullDraftNameList
 drop table FullNameList
 drop table FullDraftList
+drop table #FullDraftList
 --начало
 create table FullDraftNameList
 (
@@ -298,4 +299,5 @@ join #FullDraftList f2 on f1.Draft=f2.Draft and f1.IsRig <> f2.IsRig
 )
 insert into FullDraftList(Draft,DraftNameID,IsRig) 
 select distinct f1.Draft as Draft,f1.DraftNameID as DraftNameID, f1.IsRig as IsRig from #FullDraftList f1
-where draft >1000 order by Draft asc  
+--where draft >1000  мусорные драфты оставить
+order by Draft asc  
