@@ -46,7 +46,7 @@ update zayvka set imyk='Аникеев' where zak_1 = '14-3276'
 update zayvka set imyk='Артемов' where zak_1 = '20-3199'	
 --proos
 insert into Osnastka.TechOrder (IsApplicationFrom,Draft, FactoryOrder, FactoryNumberOrder,WorkshopID,NameDraftProduct,TechOrd,TypeOsnast,ReasonProduction,DateLimitation,AuthorTechnolog,DateCreateApplication,
-								AuthorConstructor, IsReturnedToTechnolog, DateReturnedToTechnolog, ReasonReturnedToTechnolog, IsAtConstructor, DateAtConstructor, DateAtApproval, RepairOrProduction, DateChangeTechnolog, YearTechOrd
+								AuthorConstructor, AuthorBoss,IsReturnedToTechnolog, DateReturnedToTechnolog, ReasonReturnedToTechnolog, IsAtConstructor, DateAtConstructor, DateAtApproval, RepairOrProduction, DateChangeTechnolog, YearTechOrd
 								,OperationCode
 								,Workplace
 								--,Ksi						
@@ -75,7 +75,8 @@ SELECT 1 as IsApplicationFrom
       ,cast([srok] as datetime) as DateLimitation
       ,LTRIM(RTRIM(cast([who] as varchar(20)))) as AuthorTechnolog
       ,cast([dt_who] as datetime) as DateCreateApplication
-      ,LTRIM(RTRIM(cast([boss]  as varchar(20)))) as AuthorConstructor
+      ,LTRIM(RTRIM(cast(imyk  as varchar(20)))) as AuthorConstructor
+	  ,LTRIM(RTRIM(cast(boss  as varchar(20)))) as AuthorBoss
       ,[back] as IsReturnedToTechnolog
       ,cast([dt_back] as datetime) as DateReturnedToTechnolog
       ,LTRIM(RTRIM(cast([why_back] as varchar(300)))) as ReasonReturnedToTechnolog

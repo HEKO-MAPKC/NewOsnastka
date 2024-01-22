@@ -22,6 +22,8 @@ IsStatusEmployeeApproved		bit null,				--(sog + nsog)		--IsStatusCoordinatorCons
 DateEmployeeFinalApproved		date null,				--(dsog2)			--DateCoordinatorTechnolog--(sog2) --???Согласовано
 IsStatusEmployeeFinalApproved	bit null,				--(sog2 + nsog2)    --IsStatusCoordinatorTechnolog
 
+DateEmployeeApprovedProject     date null,				--(dt_ok)	
+
 DraftPiece 						numeric (13,2) null,		--(draftzap) -нужно лучше название
 NameDraftPiece					varchar(50) null,	
 											

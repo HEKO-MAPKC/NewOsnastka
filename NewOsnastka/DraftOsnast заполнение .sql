@@ -8,6 +8,7 @@ OsnastkaByDraftID,
 ,DateEmployeeApproved
 ,IsStatusEmployeeApproved   
 ,DateEmployeeFinalApproved
+,DateEmployeeApprovedProject
 ,DraftPiece 
 ,AmountEquipmentProducePlan
 ,DateConstructorApprove
@@ -53,7 +54,8 @@ SELECT
 	   ,cast(zay.ksi as		smallint)		as					Ksi		
       ,iif(z.dt_boss is null, zay.dsog,cast(z.dt_boss as date))															as	DateEmployeeApproved
       ,iif(z.sog is null, iif(zay.sog='*',1,0),cast(z.sog as bit))														as	IsStatusEmployeeApproved            
-      ,iif(z.dt_ok is null, zay.dsog2,cast(z.dt_ok as date))															as	DateEmployeeFinalApproved
+      ,cast(zay.dsog2 as date)																							as	DateEmployeeFinalApproved
+	  ,cast(z.dt_ok as date)																							as  DateEmployeeApprovedProject
 	  ,cast(z.draftzap as numeric(13,2))																				AS	DraftPiece 
       ,iif(z.kol is null, cast(zay.kolzak as numeric (6,0)),cast(z.kol as numeric (6,0)))								as	AmountEquipmentProducePlan
       ,iif(z.dt_who is null, zay.dza,cast(z.dt_who  as date))															as	DateConstructorApprove
@@ -112,6 +114,7 @@ OsnastkaByDraftID,
 ,DateEmployeeApproved
 ,IsStatusEmployeeApproved   
 ,DateEmployeeFinalApproved
+,DateEmployeeApprovedProject
 ,DraftPiece 
 ,AmountEquipmentProducePlan
 ,DateConstructorApprove
@@ -158,7 +161,8 @@ SELECT
 	   ,cast(zay.ksi as		smallint)		as					Ksi		
       ,iif(z.dt_boss is null, zay.dsog,cast(z.dt_boss as date))															as	DateEmployeeApproved
       ,iif(z.sog is null, iif(zay.sog='*',1,0),cast(z.sog as bit))														as	IsStatusEmployeeApproved            
-      ,iif(z.dt_ok is null, zay.dsog2,cast(z.dt_ok as date))															as	DateEmployeeFinalApproved
+      ,cast(zay.dsog2 as date)																							as	DateEmployeeFinalApproved
+	  ,cast(z.dt_ok as date)																							as  DateEmployeeApprovedProject
 	  ,cast(z.draftzap as numeric(13,2))																				AS	DraftPiece 
       ,iif(z.kol is null, cast(zay.kolzak as numeric (6,0)),cast(z.kol as numeric (6,0)))								as	AmountEquipmentProducePlan
       ,iif(z.dt_who is null, zay.dza,cast(z.dt_who  as date))															as	DateConstructorApprove
@@ -239,6 +243,7 @@ OsnastkaByDraftID
 ,DateEmployeeApproved
 ,IsStatusEmployeeApproved   
 ,DateEmployeeFinalApproved
+,DateEmployeeApprovedProject
 ,DraftPiece 
 ,AmountEquipmentProducePlan
 ,DateConstructorApprove
@@ -282,7 +287,8 @@ SELECT
 	  ,cast(zay.ksi as		smallint)		as					Ksi		
       ,iif(z.dt_boss is null, zay.dsog,cast(z.dt_boss as date))															as	DateEmployeeApproved
       ,iif(z.sog is null, iif(zay.sog='*',1,0),cast(z.sog as bit))														as	IsStatusEmployeeApproved            
-      ,iif(z.dt_ok is null, zay.dsog2,cast(z.dt_ok as date))															as	DateEmployeeFinalApproved
+      ,cast(zay.dsog2 as date)																							as	DateEmployeeFinalApproved
+	  ,cast(z.dt_ok as date)																							as  DateEmployeeApprovedProject
 	  ,cast(z.draftzap as numeric(13,2))																				AS	DraftPiece 
       ,iif(z.kol is null, cast(zay.kolzak as numeric (6,0)),cast(z.kol as numeric (6,0)))								as	AmountEquipmentProducePlan
       ,iif(z.dt_who is null, zay.dza,cast(z.dt_who  as date))															as	DateConstructorApprove

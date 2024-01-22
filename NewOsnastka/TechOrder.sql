@@ -32,6 +32,7 @@ Analogue						varchar (20) null,					--(prim_an)						--в чем смысл поля??
 --IsHandOverDraft					bit null,							--(kl)							--null - неопределено, 0 со сдачей, 1 без сдачи
 --LaborManufacturingAssume		numeric(7,2) not null default(0),	--(trud)						--нужен ли вообще numeric или int  --есть отрицательные значения в записях -- чек > 0
 AuthorConstructor				varchar(20) null,					--(imyk)
+AuthorBoss						varchar(20) null,					--(boss)
 DateWorkChiefConstructor		datetime null,						--(dt_ko)
 --proos
 ReasonProduction				varchar (50) null,					--(prichina) 
