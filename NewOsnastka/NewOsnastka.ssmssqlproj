@@ -25,6 +25,12 @@
           <AssociatedConnUserName />
           <FullPath>DraftOsnast заполнение .sql</FullPath>
         </FileNode>
+        <FileNode Name="DraftOsnast.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DraftOsnast.sql</FullPath>
+        </FileNode>
         <FileNode Name="FullDraftNameList.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
@@ -37,23 +43,17 @@
           <AssociatedConnUserName />
           <FullPath>osn_act перенос.sql</FullPath>
         </FileNode>
-        <FileNode Name="OsnastDraft.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>OsnastDraft.sql</FullPath>
-        </FileNode>
         <FileNode Name="OSNSV переделка.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>OSNSV переделка.sql</FullPath>
         </FileNode>
-        <FileNode Name="TechOrder заполнение  — копия.sql">
+        <FileNode Name="TechOrder заполнение.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>TechOrder заполнение  — копия.sql</FullPath>
+          <FullPath>TechOrder заполнение.sql</FullPath>
         </FileNode>
         <FileNode Name="TechOrder.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
