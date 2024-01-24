@@ -19,29 +19,29 @@
     </LogicalFolder>
     <LogicalFolder Name="Запросы" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="DraftOsnast заполнение .sql">
+        <FileNode Name="DraftInfoFull.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>DraftOsnast заполнение .sql</FullPath>
-        </FileNode>
-        <FileNode Name="DraftOsnast.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>DraftOsnast.sql</FullPath>
-        </FileNode>
-        <FileNode Name="FullDraftNameList.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>FullDraftNameList.sql</FullPath>
+          <FullPath>DraftInfoFull.sql</FullPath>
         </FileNode>
         <FileNode Name="osn_act перенос.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>osn_act перенос.sql</FullPath>
+        </FileNode>
+        <FileNode Name="OsnastOrder заполнение .sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>OsnastOrder заполнение .sql</FullPath>
+        </FileNode>
+        <FileNode Name="OsnastOrder.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>OsnastOrder.sql</FullPath>
         </FileNode>
         <FileNode Name="OSNSV переделка.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>

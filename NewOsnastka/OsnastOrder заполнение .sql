@@ -1,17 +1,17 @@
 --select distinct YearTechOrder from Osnastka.TechOrder group by YearTechOrder
 --заполнение заявки
 --нулевые zak_1
-insert into Osnastka.DraftOsnast(	
-OsnastkaByDraftID
+insert into Osnastka.OsnastOrder(	
+OsnastUseListID
  --,DraftOsn
- ,OsnastDraftID
+ ,OsnastID
  ,Ksi
 ,DateEmployeeApproved
 ,IsStatusEmployeeApproved   
 ,DateEmployeeFinalApproved
 ,DateEmployeeApprovedProject
 --,DraftPiece 
- ,InterOsnastDraftID
+ ,InterOsnastID
 ,AmountEquipmentProducePlan
 ,DateConstructorApprove
 ,AuthorConstructorExecute
@@ -50,17 +50,17 @@ OsnastkaByDraftID
 	  ,LaborManufacturingAssume	
 )
 SELECT   
-	OD.OsnastkaByDraftID as OsnastkaByDraftID,
+	OD.OsnastUseListID as OsnastUseListID,
 	  ---------------zayvka + proos
        --iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2)))					as	DraftOsn
-      f1.draftid																										as	OsnastDraftID
+      f1.draftid																										as	OsnastID
 	  ,cast(zay.ksi as		smallint)																					as	Ksi		
       ,iif(z.dt_boss is null, zay.dsog,cast(z.dt_boss as date))															as	DateEmployeeApproved
       ,iif(z.sog is null, iif(zay.sog='*',1,0),cast(z.sog as bit))														as	IsStatusEmployeeApproved            
       ,cast(zay.dsog2 as date)																							as	DateEmployeeFinalApproved
 	  ,cast(z.dt_ok as date)																							as  DateEmployeeApprovedProject
 	  --,cast(z.draftzap as numeric(13,2))																				AS	DraftPiece 
-	  ,f2.draftid																										AS	InterOsnastDraftID 
+	  ,f2.draftid																										AS	InterOsnastID 
       ,iif(z.kol is null, cast(zay.kolzak as numeric (6,0)),cast(z.kol as numeric (6,0)))								as	AmountEquipmentProducePlan
       ,iif(z.dt_who is null, zay.dza,cast(z.dt_who  as date))															as	DateConstructorApprove
       ,LTRIM(RTRIM(iif(z.fioko is null, cast(zay.ispolk as varchar(20)),cast(z.fioko as varchar(20)))))					as	AuthorConstructorExecute
@@ -104,28 +104,28 @@ SELECT
   FROM zayvka zay
   left join os_pro s on s.zak_1 = zay.zak_1
   left join proos z on zay.zak_1 = z.zak_1 
-    left join (select o.OsnastkaByDraftID,Workplace,OperationCode,df.Draft as Draft, osf.Draft as DraftOsn from Osnastka.OsnastkaByDraft o
-  join FullDraftList df on df.DraftID = o.DraftID
-  join FullDraftList osf on osf.DraftID = o.OsnastkaID) as OD on  
+    left join (select o.OsnastUseListID,Workplace,OperationCode,df.Draft as Draft, osf.Draft as DraftOsn from Osnastka.OsnastUseList o
+  join DraftInfoFull df on df.DraftID = o.DraftID
+  join DraftInfoFull osf on osf.DraftID = o.OsnastID) as OD on  
   OD.Workplace = zay.rab_m and OD.OperationCode = zay.kodop and OD.Draft = zay.Draft and
    OD.DraftOsn = iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2))) 
-  left join FullDraftList f1 on 
+  left join DraftInfoFull f1 on 
 	iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2))) = f1.draft 
-  left join FullDraftList f2 on 
+  left join DraftInfoFull f2 on 
 	cast(z.draftzap as numeric(13,2)) = f2.draft
   where z.draft is null and zay.zak_1 = ''                        --TODO ПОЧЕМУ ТУТ ДРАФТОСН 0???
 --не нулевые
-insert into Osnastka.DraftOsnast(	
-OsnastkaByDraftID
+insert into Osnastka.OsnastOrder(	
+OsnastUseListID
  --DraftOsn
- ,OsnastDraftID
+ ,OsnastID
  ,Ksi
 ,DateEmployeeApproved
 ,IsStatusEmployeeApproved   
 ,DateEmployeeFinalApproved
 ,DateEmployeeApprovedProject
 --,DraftPiece 
- ,InterOsnastDraftID
+ ,InterOsnastID
 ,AmountEquipmentProducePlan
 ,DateConstructorApprove
 ,AuthorConstructorExecute
@@ -165,17 +165,17 @@ OsnastkaByDraftID
 	  ,LaborManufacturingAssume	
 )
 SELECT   
-	OD.OsnastkaByDraftID as OsnastkaByDraftID,
+	OD.OsnastUseListID as OsnastUseListID,
 	  ---------------zayvka + proos
        --iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2)))					as	DraftOsn
-	  f1.draftid																										as	OsnastDraftID
+	  f1.draftid																										as	OsnastID
 	  ,cast(zay.ksi as		smallint)		as					Ksi		
       ,iif(z.dt_boss is null, zay.dsog,cast(z.dt_boss as date))															as	DateEmployeeApproved
       ,iif(z.sog is null, iif(zay.sog='*',1,0),cast(z.sog as bit))														as	IsStatusEmployeeApproved            
       ,cast(zay.dsog2 as date)																							as	DateEmployeeFinalApproved
 	  ,cast(z.dt_ok as date)																							as  DateEmployeeApprovedProject
 	  --,cast(z.draftzap as numeric(13,2))																				AS	DraftPiece 
-	  ,f2.draftid																										AS	InterOsnastDraftID 
+	  ,f2.draftid																										AS	InterOsnastID 
       ,iif(z.kol is null, cast(zay.kolzak as numeric (6,0)),cast(z.kol as numeric (6,0)))								as	AmountEquipmentProducePlan
       ,iif(z.dt_who is null, zay.dza,cast(z.dt_who  as date))															as	DateConstructorApprove
       ,LTRIM(RTRIM(iif(z.fioko is null, cast(zay.ispolk as varchar(20)),cast(z.fioko as varchar(20)))))								as	AuthorConstructorExecute
@@ -219,50 +219,50 @@ SELECT
   FROM zayvka zay
   left join os_pro s on s.zak_1 = zay.zak_1  and zay.draft = s.draft_4 and zay.dza = s.d_otk_23 and cast(zay.draftosn as char(14)) = cast(rtrim(ltrim(s.osn_6)) as char(14)) 
   left join proos z on zay.zak_1 = z.zak_1 
-      left join (select o.OsnastkaByDraftID,Workplace,OperationCode,df.Draft as Draft, osf.Draft as DraftOsn from Osnastka.OsnastkaByDraft o
-  join FullDraftList df on df.DraftID = o.DraftID
-  join FullDraftList osf on osf.DraftID = o.OsnastkaID) as OD on  
+      left join (select o.OsnastUseListID,Workplace,OperationCode,df.Draft as Draft, osf.Draft as DraftOsn from Osnastka.OsnastUseList o
+  join DraftInfoFull df on df.DraftID = o.DraftID
+  join DraftInfoFull osf on osf.DraftID = o.OsnastID) as OD on  
   OD.Workplace = zay.rab_m and OD.OperationCode = zay.kodop and OD.Draft = zay.Draft and
    OD.DraftOsn = iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2))) 
-  left join FullDraftList f1 on 
+  left join DraftInfoFull f1 on 
 	iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2))) = f1.draft 
-  left join FullDraftList f2 on 
+  left join DraftInfoFull f2 on 
 	cast(z.draftzap as numeric(13,2)) = f2.draft
   where z.zak_1 is null and zay.zak_1 <> ''
 ----соединение draftosnast и techorder для zak_1 пустого
-update Osnastka.DraftOsnast 
+update Osnastka.OsnastOrder 
 set TechOrderID = g.TechOrderID
 from
 (
 select 
-T.TechOrderID, d.DraftOsnastID
+T.TechOrderID, d.OsnastOrderID
 from Osnastka.TechOrder T
-join Osnastka.DraftOsnast D on T.OldZayvkaid = D.OldZayvkaid
+join Osnastka.OsnastOrder D on T.OldZayvkaid = D.OldZayvkaid
 ) as g
-where Osnastka.DraftOsnast.YearTechOrd ='' and Osnastka.DraftOsnast.DraftOsnastID = g.DraftOsnastID
+where Osnastka.OsnastOrder.YearTechOrd ='' and Osnastka.OsnastOrder.OsnastOrderID = g.OsnastOrderID
 --соединение draftosnast и techorder для zak_1 не пустого
-update Osnastka.DraftOsnast 
+update Osnastka.OsnastOrder 
 set TechOrderID = g.TechOrderID
 from
 (
 select 
-T.TechOrderID, d.DraftOsnastID
+T.TechOrderID, d.OsnastOrderID
 from Osnastka.TechOrder T
-join Osnastka.DraftOsnast D on T.YearTechOrd = D.YearTechOrd
+join Osnastka.OsnastOrder D on T.YearTechOrd = D.YearTechOrd
 ) as g
-where Osnastka.DraftOsnast.YearTechOrd <> '' and Osnastka.DraftOsnast.DraftOsnastID = g.DraftOsnastID
+where Osnastka.OsnastOrder.YearTechOrd <> '' and Osnastka.OsnastOrder.OsnastOrderID = g.OsnastOrderID
 --вставка проос
-insert into Osnastka.DraftOsnast(	
-OsnastkaByDraftID
+insert into Osnastka.OsnastOrder(	
+OsnastUseListID
  --,DraftOsn
- ,OsnastDraftID
+ ,OsnastID
  ,Ksi
 ,DateEmployeeApproved
 ,IsStatusEmployeeApproved   
 ,DateEmployeeFinalApproved
 ,DateEmployeeApprovedProject
 --,DraftPiece 
- ,InterOsnastDraftID
+ ,InterOsnastID
 ,AmountEquipmentProducePlan
 ,DateConstructorApprove
 ,AuthorConstructorExecute
@@ -299,17 +299,17 @@ OsnastkaByDraftID
 	  ,LaborManufacturingAssume	
 )
 SELECT   
-	OD.OsnastkaByDraftID as OsnastkaByDraftID,
+	OD.OsnastUseListID as OsnastUseListID,
 	  ---------------zayvka + proos
       --iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2)))					as	DraftOsn
-	        f1.draftid																										as	OsnastDraftID
+	        f1.draftid																										as	OsnastID
 	  ,cast(zay.ksi as		smallint)		as					Ksi		
       ,iif(z.dt_boss is null, zay.dsog,cast(z.dt_boss as date))															as	DateEmployeeApproved
       ,iif(z.sog is null, iif(zay.sog='*',1,0),cast(z.sog as bit))														as	IsStatusEmployeeApproved            
       ,cast(zay.dsog2 as date)																							as	DateEmployeeFinalApproved
 	  ,cast(z.dt_ok as date)																							as  DateEmployeeApprovedProject
 	  --,cast(z.draftzap as numeric(13,2))																				AS	DraftPiece
-	  	  ,f2.draftid																										AS	InterOsnastDraftID 
+	  	  ,f2.draftid																										AS	InterOsnastID 
       ,iif(z.kol is null, cast(zay.kolzak as numeric (6,0)),cast(z.kol as numeric (6,0)))								as	AmountEquipmentProducePlan
       ,iif(z.dt_who is null, zay.dza,cast(z.dt_who  as date))															as	DateConstructorApprove
       ,LTRIM(RTRIM(iif(z.fioko is null, cast(zay.ispolk as varchar(20)),cast(z.fioko as varchar(20)))))					as	AuthorConstructorExecute
@@ -350,14 +350,14 @@ SELECT
   join proos z on t.OldProosID = z.tzakpred 
   left join os_pro s on s.zak_1 = t.YearTechOrd
   left join zayvka zay on zay.predtz = t.OldZayvkaid 
-      left join (select o.OsnastkaByDraftID,Workplace,OperationCode,df.Draft as Draft, osf.Draft as DraftOsn from Osnastka.OsnastkaByDraft o
-  join FullDraftList df on df.DraftID = o.DraftID
-  join FullDraftList osf on osf.DraftID = o.OsnastkaID) as OD on  
+      left join (select o.OsnastUseListID,Workplace,OperationCode,df.Draft as Draft, osf.Draft as DraftOsn from Osnastka.OsnastUseList o
+  join DraftInfoFull df on df.DraftID = o.DraftID
+  join DraftInfoFull osf on osf.DraftID = o.OsnastID) as OD on  
   OD.Workplace = zay.rab_m and OD.OperationCode = zay.kodop and OD.Draft = zay.Draft and
    OD.DraftOsn = iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2))) 
-  left join FullDraftList f1 on 
+  left join DraftInfoFull f1 on 
 	iif(z.draftosn is null, cast(zay.draftosn as numeric(13,2)),cast(z.draftosn as numeric(13,2))) = f1.draft 
-  left join FullDraftList f2 on 
+  left join DraftInfoFull f2 on 
 	cast(z.draftzap as numeric(13,2)) = f2.draft
   where t.IsApplicationFrom=1 
 

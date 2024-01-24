@@ -1,4 +1,4 @@
-drop table [Osnastka].DraftOsnast
+drop table [Osnastka].OsnastOrder
 drop table [Osnastka].TechOrder
 --create schema Osnastka
 create table [Osnastka].TechOrder
@@ -7,8 +7,8 @@ create table [Osnastka].TechOrder
 TechOrderID						int not null identity(1,1),
 IsApplicationFrom				bit null,   						--0-ПГТ, 1-Производство 
 DateCreateApplication			datetime null,						--(dza)
-TechOrd						smallint null default(0),			--(tzak)			
-YearTechOrd                   varchar(7) not null default(''),	--(zak_1)
+TechOrd							smallint null default(0),			--(tzak)			
+YearTechOrd						varchar(7) not null default(''),	--(zak_1)
 --Draft							numeric (13,2) null,				--(draft)	
 DraftID							int not null,
 --NameDraft						varchar(50) null,
@@ -56,12 +56,12 @@ OldZayvkaid						int null,
 
 
 --уникальность полей
-
 --Constraint CHK_LaborManufacturingAssume							check(LaborManufacturingAssume >= 0),
 Constraint CHK_FactoryOrder										check(FactoryOrder >= 0 and FactoryOrder <= 9999),
 Constraint CHK_FactoryNumberOrder								check(FactoryNumberOrder >= 0 and FactoryNumberOrder <= 999),
 Constraint CHK_TechOrder										check(TechOrd >= 0 and TechOrd <= 9999),
 
+Constraint FK_DraftID_OsnastUseList								foreign key(DraftID)			references DraftInfoFull (DraftID), 
 Constraint FK_Workplace_oborud									foreign key(Workplace)			references oborud (rab_m), 
 Constraint FK_OperationCode_s_oper								foreign key(OperationCode)		references s_oper (code), 
 Constraint FK_WorkshopID_Workshop								foreign key(WorkshopID)			references Workshop (WorkshopID), 

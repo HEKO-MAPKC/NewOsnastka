@@ -20,11 +20,11 @@
   */
 
   --Только первый раз
-insert into ReferenceCode values ('Наименование чертежа')
+--insert into ReferenceCode values ('Наименование чертежа')
   --Повторные разы
 drop table FullDraftNameList
 drop table FullNameList
-drop table FullDraftList
+drop table DraftInfoFull
 drop table #FullDraftList
 --начало
 create table FullDraftNameList
@@ -176,13 +176,13 @@ IsRig						int null
 Constraint PK_1FullDraftListID primary key(DraftID),
 Constraint FK_1DraftNameID_ReferenceInformation	foreign key(DraftNameID) references ReferenceInformation (ReferenceInformationID)
 )
-create table FullDraftList
+create table DraftInfoFull
 (
 DraftID						int identity(1,1)not null,  
 Draft						decimal(13,2) not null,  
 DraftNameID					int null,
 IsRig						int null
-Constraint PK_FullDraftListID primary key(DraftID),
+Constraint PK_DraftInfoFullID primary key(DraftID),
 Constraint FK_DraftNameID_ReferenceInformation	foreign key(DraftNameID) references ReferenceInformation (ReferenceInformationID)
 )
 truncate table #FullDraftList
@@ -297,7 +297,7 @@ update #FullDraftList set IsRig = 2 where DraftID in
 (select f1.DraftID as DraftID from #FullDraftList f1
 join #FullDraftList f2 on f1.Draft=f2.Draft and f1.IsRig <> f2.IsRig 
 )
-insert into FullDraftList(Draft,DraftNameID,IsRig) 
+insert into DraftInfoFull(Draft,DraftNameID,IsRig) 
 select distinct f1.Draft as Draft,f1.DraftNameID as DraftNameID, f1.IsRig as IsRig from #FullDraftList f1
 --where draft >1000  мусорные драфты оставить
 order by Draft asc  
