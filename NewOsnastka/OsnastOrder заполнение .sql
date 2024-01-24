@@ -361,18 +361,3 @@ SELECT
 	cast(z.draftzap as numeric(13,2)) = f2.draft
   where t.IsApplicationFrom=1 
 
---объединение с osnsv --не
---select * from Osnastka.DraftOsnast
---update Osnastka.DraftOsnast 
---set OsnastkaByDraftID = g.OsnastkaByDraftID
---from
---(
---select 
---T.OsnastkaByDraftID, d.DraftOsnastID
---from Osnastka.OsnastkaByDraftList T
---join (
---select dra.DraftOsn from Osnastka.DraftOsnast dra
---join Osnastka.TechOrder tec on dra.TechOrderID = tec.TechOrderID
---) as D on T.OsnastkaID = D.DraftOsn
---) as g
---where Osnastka.DraftOsnast.YearTechOrd ='' and Osnastka.DraftOsnast.DraftOsnastID = g.DraftOsnastID
