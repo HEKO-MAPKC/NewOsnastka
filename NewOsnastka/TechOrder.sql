@@ -9,8 +9,9 @@ IsApplicationFrom				bit null,   						--0-ПГТ, 1-Производство
 DateCreateApplication			datetime null,						--(dza)
 TechOrd						smallint null default(0),			--(tzak)			
 YearTechOrd                   varchar(7) not null default(''),	--(zak_1)
-Draft							numeric (13,2) null,				--(draft)	
-NameDraft						varchar(50) null,
+--Draft							numeric (13,2) null,				--(draft)	
+DraftID							int not null,
+--NameDraft						varchar(50) null,
 Workplace						numeric (3,0) null,					--(rab_m)						--внешний ключ
 OperationCode					numeric (4,0) null,					--(kodop + kpodrt)				--внешний ключ
 FactoryOrder                    smallint not null default(0),		--(zakf - zakaz)				
