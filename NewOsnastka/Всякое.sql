@@ -21,3 +21,35 @@ select * from DraftInfoFull
 select * from ReferenceInformation where ReferenceInformationID = 36964
 
 select * from Osnastka.OsnastOrder
+insert into [Osnastka].OsnastUseList(
+DraftID,
+OsnastID,
+Workplace,				
+OperationCode
+,Ksi							
+,AmountEquipmentInWorkTogether
+,AmountEquipmentForOper   	
+,IsHandOverDraft				
+,Note							
+,Analogue						
+,LaborManufacturingAssume	
+,OldOsnsvID					
+)
+select 
+DraftID	,
+OsnastID,
+Workplace,				
+OperationCode,
+Ksi														
+,AmountEquipmentInWorkTogether		  				
+,AmountEquipmentForOper   								
+,IsHandOverDraft											
+,Note														
+,Analogue													
+,LaborManufacturingAssume		
+,OldOsnsvID			
+from Osnastka.OsnastUseList o
+
+select * from Osnastka.OsnastUseListJournal where OsnastUseListID=1
+update Osnastka.OsnastUseList set draftID = 1 where OsnastUseListID=1
+select * from ocomplect
