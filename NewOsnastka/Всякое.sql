@@ -52,4 +52,6 @@ from Osnastka.OsnastUseList o
 
 select * from Osnastka.OsnastUseListJournal where OsnastUseListID=1
 update Osnastka.OsnastUseList set draftID = 1 where OsnastUseListID=1
-select * from ocomplect
+select * from ocomplect o where [group] <> 0
+select * from vUsersInfoFull where last_name like '%Леб%'
+select * from prod order by zak_1
