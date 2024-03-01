@@ -49,6 +49,12 @@
           <AssociatedConnUserName />
           <FullPath>OSNSV переделка.sql</FullPath>
         </FileNode>
+        <FileNode Name="ResPart.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ResPart.sql</FullPath>
+        </FileNode>
         <FileNode Name="TechOrder заполнение.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:elsibdb1:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>elsibdb1</AssociatedConnSrvName>

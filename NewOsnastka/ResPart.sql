@@ -13,13 +13,13 @@ OsnastUseListID as OsnastUseListID
 ,df.Draft as ResPart 
 ,rd.ReferenceName as ResPartName
 ,Osn.WorkplaceID as WorkplaceID
-,ob.code as WorkplaceCode
-,ob.oborud as WorkplaceMachine
-,ob.cex as Workshop
-,wo.StoreroomOsnast as StoreroomOsnast
-,Osn.OperationCodeID as OperationCodeID
-,so.oper as Operation
-,so.cex as OperationCex
+,WorkplaceCode
+,WorkplaceMachine
+,Workshop
+,StoreroomOsnast
+,OperationCodeID
+,Operation
+,OperationCex
 ,o.Ksi							
 ,quant as AmountEquipmentInWorkTogether
 ,quant as AmountEquipmentForOper  	
@@ -29,30 +29,30 @@ OsnastUseListID as OsnastUseListID
 ,LaborManufacturingAssume	
 from ocomplect o
 left join Osnastka.vOsnastUseList Osn on Osn.Osnast = o.kuda
-left join DraftInfoFull df on df.Draft = o.what
-left join DraftInfoFull osf on osf.Draft = o.kuda
-left join ReferenceInformation rd on rd.ReferenceInformationID = df.DraftNameID
-left join ReferenceInformation ros on ros.ReferenceInformationID = osf.DraftNameID
-left join oborud ob on ob.rab_m = Osn.WorkplaceID
-left join s_oper so on so.code = Osn.OperationCodeID
-left join Workshop wo on wo.Workshop = ob.cex
+ join DraftInfoFull df on df.Draft = o.what
+ join DraftInfoFull osf on osf.Draft = o.kuda
+ join ReferenceInformation rd on rd.ReferenceInformationID = df.DraftNameID
+ join ReferenceInformation ros on ros.ReferenceInformationID = osf.DraftNameID
+--left join oborud ob on ob.rab_m = Osn.WorkplaceID
+--left join s_oper so on so.code = Osn.OperationCodeID
+--left join Workshop wo on wo.Workshop = ob.cex
 union
 select 
 OsnastUseListID as OsnastUseListID
-,Osn.Draft as Draft
-,Osn.DraftName as DraftName
+,iif(Osn.Draft is not null,Osn.Draft,o.draft) as Draft
+,iif(Osn.DraftName is not null,Osn.DraftName,dror.ReferenceName) as DraftName
 ,osf.Draft as Osnast 
 ,ros.ReferenceName as OsnastName
 ,df.Draft as ResPart 
 ,rd.ReferenceName as ResPartName
 ,Osn.WorkplaceID as WorkplaceID
-,ob.code as WorkplaceCode
-,ob.oborud as WorkplaceMachine
-,ob.cex as Workshop
-,wo.StoreroomOsnast as StoreroomOsnast
+,WorkplaceCode
+,WorkplaceMachine
+,Workshop
+,StoreroomOsnast
 ,Osn.OperationCodeID as OperationCodeID
-,so.oper as Operation
-,so.cex as OperationCex
+,Operation
+,OperationCex
 ,Ksi							
 ,AmountEquipmentInWorkTogether as AmountEquipmentInWorkTogether
 ,AmountEquipmentForOper as AmountEquipmentForOper  	
@@ -61,13 +61,12 @@ OsnastUseListID as OsnastUseListID
 ,Analogue						
 ,LaborManufacturingAssume	
 from pomoika o
-left join Osnastka.vOsnastUseList Osn on Osn.Osnast = o.draftosn
+left join Osnastka.vOsnastUseList Osn on Osn.Osnast = o.draftosn and Osn.Draft = o.draft
 left join DraftInfoFull df on df.Draft = o.draftzap
 left join DraftInfoFull osf on osf.Draft = o.draftosn
 left join ReferenceInformation rd on rd.ReferenceInformationID = df.DraftNameID
 left join ReferenceInformation ros on ros.ReferenceInformationID = osf.DraftNameID
-left join oborud ob on ob.rab_m = Osn.WorkplaceID
-left join s_oper so on so.code = Osn.OperationCodeID
-left join Workshop wo on wo.Workshop = ob.cex
+left join DraftInfoFull dro on dro.Draft = o.draft
+left join ReferenceInformation dror on dror.ReferenceInformationID = dro.DraftNameID
 	) AS MyResults
 GO

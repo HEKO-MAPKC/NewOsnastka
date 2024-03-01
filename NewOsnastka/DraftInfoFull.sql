@@ -20,7 +20,7 @@
   */
 
   --Только первый раз
---insert into ReferenceCode values ('Наименование чертежа')
+insert into ReferenceCode values ('Наименование чертежа')
   --Повторные разы
 drop table FullDraftNameList
 drop table FullNameList
@@ -283,6 +283,9 @@ from
 update f1 set DraftName = 'БЕЗ НАИМЕНОВАНИЯ' 
 from	  
 #FullDraftList f1 where DraftName = ''
+update f1 set DraftName = 'ЧЕРТЕЖ ОТСУТСТВУЕТ' 
+from	  
+#FullDraftList f1 where draft = 0
 
 insert into ReferenceInformation(
 	   [ReferenceCodeID]

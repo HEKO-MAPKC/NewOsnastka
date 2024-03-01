@@ -49,9 +49,11 @@ Ksi
 ,LaborManufacturingAssume		
 ,OldOsnsvID			
 from Osnastka.OsnastUseList o
-
-select * from Osnastka.OsnastUseListJournal where OsnastUseListID=1
+select * from osnsv
+select * from Osnastka.vResPart where OsnastUseListID=1
 update Osnastka.OsnastUseList set draftID = 1 where OsnastUseListID=1
-select * from ocomplect o where [group] <> 0
-select * from vUsersInfoFull where last_name like '%Ћеб%'
+select * from pomoika o where [group] <> 0
+select * from vUsersInfoFull where first_name like '%Ёль%'
 select * from prod order by zak_1
+select * from Osnastka.vResPart order by zak_1
+SELECT * FROM ReferenceInformation WHERE ReferenceInformationID = 330887

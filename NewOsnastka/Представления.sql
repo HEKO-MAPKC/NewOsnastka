@@ -2,6 +2,13 @@ go
 drop view Osnastka.vOsnastUseList
 drop view Osnastka.vOsnastTechOrder
 drop view Osnastka.vOsnastUseListJournal
+go --œÂ‰ÒÚ‡‚ÎÂÌËÂ Ì‡Á‚‡ÌËÈ // TODO œŒ‘» —»“‹ ¬Œ– ÿŒœ ƒÀﬂ ¬‹ﬁ’ œŒ Œ—Õ—¬
+create view vDraftNameList as
+select 
+d.Draft as Draft
+,rd.ReferenceName as Name
+from DraftInfoFull d
+join ReferenceInformation rd on rd.ReferenceInformationID = d.DraftNameID
 go
 create view Osnastka.vOsnastUseList as
 select 
@@ -11,13 +18,13 @@ o.OsnastUseListID as OsnastUseListID
 ,rd.ReferenceName as DraftName
 ,ros.ReferenceName as OsnastName
 ,Workplace as WorkplaceID
-,ob.code as WorkplaceCode
-,ob.oborud as WorkplaceMachine
-,ob.cex as Workshop
-,wo.StoreroomOsnast as StoreroomOsnast
+,LTRIM(RTRIM(ob.code)) as WorkplaceCode
+,LTRIM(RTRIM(ob.oborud)) as WorkplaceMachine
+,LTRIM(RTRIM(ob.cex)) as Workshop
+,LTRIM(RTRIM(wo.StoreroomOsnast)) as StoreroomOsnast
 ,OperationCode as OperationCodeID
-,so.oper as Operation
-,so.cex as OperationCex
+,LTRIM(RTRIM(so.oper)) as Operation
+,LTRIM(RTRIM(so.cex ))as OperationCex
 ,Ksi							
 ,AmountEquipmentInWorkTogether
 ,AmountEquipmentForOper   	
@@ -47,12 +54,12 @@ OsnastUseListJournalID
 ,ros.ReferenceName as OsnastName
 ,Workplace as WorkplaceID
 ,ob.code as WorkplaceCode
-,ob.oborud as WorkplaceMachine
-,ob.cex as Workshop
-,wo.StoreroomOsnast as StoreroomOsnast
+,LTRIM(RTRIM(ob.oborud)) as WorkplaceMachine
+,LTRIM(RTRIM(ob.cex)) as Workshop
+,LTRIM(RTRIM(wo.StoreroomOsnast)) as StoreroomOsnast
 ,OperationCode as OperationCodeID
-,so.oper as Operation
-,so.cex as OperationCex
+,LTRIM(RTRIM(so.oper)) as Operation
+,LTRIM(RTRIM(so.cex)) as OperationCex
 ,Ksi							
 ,AmountEquipmentInWorkTogether
 ,AmountEquipmentForOper   	
@@ -77,13 +84,13 @@ o.OsnastOrderID as OsnastOrderID
 ,rd.ReferenceName as DraftName
 ,ros.ReferenceName as OsnastName
 ,Workplace as WorkplaceID
-,ob.code as WorkplaceCode
-,ob.oborud as WorkplaceMachine
-,ob.cex as Workshop
-,wo.StoreroomOsnast as StoreroomOsnast
+,LTRIM(RTRIM(ob.code)) as WorkplaceCode
+,LTRIM(RTRIM(ob.oborud)) as WorkplaceMachine
+,LTRIM(RTRIM(wo.Workshop)) as Workshop
+,LTRIM(RTRIM(wo.StoreroomOsnast)) as StoreroomOsnast
 ,OperationCode as OperationCodeID
-,so.oper as Operation
-,so.cex as OperationCex
+,LTRIM(RTRIM(so.oper)) as Operation
+,LTRIM(RTRIM(so.cex)) as OperationCex
 
 ,IsApplicationFrom     
 ,FactoryOrder
@@ -163,15 +170,15 @@ left join ReferenceInformation r on r.ReferenceInformationID = t.TypeOsnast
 left join ReferenceInformation f on f.ReferenceInformationID = t.RepairOrProduction 
 left join oborud ob on ob.rab_m = t.Workplace
 left join s_oper so on so.code = t.OperationCode
-left join Workshop wo on wo.Workshop = ob.cex
+left join Workshop wo on wo.WorkshopID = t.WorkshopID
 go
-select * from Osnastka.OsnastOrder
-select * from oborud
-select * from s_oper
-select * from Workshop
-select * from Osnastka.vOsnastTechOrder
-select * from Osnastka.vOsnastUseList
-select * from Osnastka.vOsnastUseListJournal
+--select * from Osnastka.OsnastOrder
+--select * from oborud
+--select * from s_oper
+--select * from Workshop
+--select * from Osnastka.vOsnastTechOrder
+--select * from Osnastka.vOsnastUseList
+--select * from Osnastka.vOsnastUseListJournal
 --ÚË„„Â˚
 go
 CREATE TRIGGER OsnastUseList_INSERT
