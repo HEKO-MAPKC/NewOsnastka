@@ -77,10 +77,9 @@ OldZayvkaid						int null,
 OldProosid						int null,
 YearTechOrd						varchar(7) not null default(''),	--(zak_1)
 
-Constraint CHK_LaborManufacturingAssume			check(LaborManufacturingAssume >= 0),
-Constraint FK_TechOrderID_TechOrder				foreign key(TechOrderID)			references Osnastka.TechOrder (TechOrderID), 
-Constraint FK_ProdID_TechOrder					foreign key(ProdID)					references prod (ID), 
-Constraint FK_OsnastkaByDraftID_TechOrder		foreign key(OsnastUseListID)		references Osnastka.OsnastUseList (OsnastUseListID), 
+Constraint FK_TechOrderID_OsnastOrder				foreign key(TechOrderID)			references Osnastka.TechOrder (TechOrderID), 
+Constraint FK_ProdID_OsnastOrder					foreign key(ProdID)					references prod (ID), 
+Constraint FK_OsnastkaByDraftID_OsnastOrder		foreign key(OsnastUseListID)		references Osnastka.OsnastUseList (OsnastUseListID), 
 Constraint FK_OsnastID_OsnastUseList			foreign key(OsnastID)				references DraftInfoFull (DraftID), 
 Constraint FK_InterOsnastID_OsnastUseList				foreign key(InterOsnastID)				references DraftInfoFull (DraftID), 
 Constraint PK_OsnastOrderID						primary key(OsnastOrderID)

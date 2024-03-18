@@ -1,3 +1,4 @@
+drop table [Osnastka].DraftOsnast
 drop table [Osnastka].OsnastOrder
 drop table [Osnastka].TechOrder
 --create schema Osnastka

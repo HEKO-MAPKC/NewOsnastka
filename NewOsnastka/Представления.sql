@@ -87,6 +87,7 @@ o.OsnastOrderID as OsnastOrderID
 ,LTRIM(RTRIM(ob.code)) as WorkplaceCode
 ,LTRIM(RTRIM(ob.oborud)) as WorkplaceMachine
 ,LTRIM(RTRIM(wo.Workshop)) as Workshop
+,wo.WorkshopID as WorkshopID
 ,LTRIM(RTRIM(wo.StoreroomOsnast)) as StoreroomOsnast
 ,OperationCode as OperationCodeID
 ,LTRIM(RTRIM(so.oper)) as Operation
@@ -297,3 +298,14 @@ o.OsnastUseListID as OsnastUseListID
 ,Analogue													
 ,LaborManufacturingAssume		
 from deleted o
+go
+drop view  Osnastka.vComplectWithNames
+go --представление out_pro
+create view Osnastka.vComplectWithNames as
+select 
+o.what as draft
+,rd.ReferenceName as draftName
+,o.kuda as across 
+from complect o
+left join DraftInfoFull df on df.Draft = o.what
+left join ReferenceInformation rd on rd.ReferenceInformationID = df.DraftNameID

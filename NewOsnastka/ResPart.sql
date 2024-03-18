@@ -2,7 +2,7 @@ go
 drop view Osnastka.vResPart
 go
 create view Osnastka.vResPart as
-SELECT ROW_NUMBER() OVER( ORDER BY OsnastUseListID ) AS id, *
+SELECT ISNULL(ROW_NUMBER() OVER( ORDER BY OsnastUseListID ),-1) AS id, *
 FROM(
 select 
 OsnastUseListID as OsnastUseListID
@@ -70,3 +70,4 @@ left join DraftInfoFull dro on dro.Draft = o.draft
 left join ReferenceInformation dror on dror.ReferenceInformationID = dro.DraftNameID
 	) AS MyResults
 GO
+select * from ocomplect
