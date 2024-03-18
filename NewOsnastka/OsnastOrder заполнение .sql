@@ -114,6 +114,7 @@ SELECT
   left join DraftInfoFull f2 on 
 	cast(z.draftzap as numeric(13,2)) = f2.draft
   where z.draft is null and zay.zak_1 = ''                        --TODO ПОЧЕМУ ТУТ ДРАФТОСН 0???
+  order by zay.id 
 --не нулевые
 insert into Osnastka.OsnastOrder(	
 OsnastUseListID
@@ -229,6 +230,7 @@ SELECT
   left join DraftInfoFull f2 on 
 	cast(z.draftzap as numeric(13,2)) = f2.draft
   where z.zak_1 is null and zay.zak_1 <> ''
+  order by zay.id 
 ----соединение draftosnast и techorder для zak_1 пустого
 update Osnastka.OsnastOrder 
 set TechOrderID = g.TechOrderID
@@ -360,4 +362,5 @@ SELECT
   left join DraftInfoFull f2 on 
 	cast(z.draftzap as numeric(13,2)) = f2.draft
   where t.IsApplicationFrom=1 
+  order by tzakpred
 
